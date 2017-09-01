@@ -10,3 +10,4 @@ libcairo2
 git
 libffi-dev
 libpq-dev
+zlib1g-dev
