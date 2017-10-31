@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'ajax_select',
     'crispy_forms',
     'cruds_adminlte',
-
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -140,8 +139,17 @@ LOGIN_REDIRECT_URL = reverse_lazy('laboratory:index')
 
 # Email development settings
 DEFAULT_FROM_EMAIL = "mail@example.com"
-EMAIL_HOST = "localhost"
-EMAIL_PORT = "1025"
+#EMAIL_HOST = "localhost"
+#EMAIL_PORT = "1025"
+
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#EMAIL_USE_TLS = True
+EMAIL_HOST = 'localhost'  # mail service smtp
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = 'organilab@organilab.com'  # a real email
+# EMAIL_HOST_PASSWORD = 'a password' # the password of the real email
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Celery settings
 BROKER_URL = 'redis://localhost:6379'
