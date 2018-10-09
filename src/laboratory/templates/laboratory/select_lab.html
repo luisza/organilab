@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load bootstrap i18n laboratory %}
+
+{% block title %}{% trans 'Select laboratory' %}{% endblock %}
+
+{% block content %}
+
+{%  has_perms "laboratory.view_laboratory" as perm_laboratory %}
+{%  has_perms "laboratory.add_laboratory" as perm_add_laboratory %}
+
+  <div align="right">
+  {% if perm_add_laboratory %}
+    <a id="create_lab_btn" class="btn btn-default"  href="{% url 'laboratory:create_lab' %}" >
+    {% trans 'Create laboratory' %}</a>
+  {% endif %}
+  </div>
+
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6">
+      <div class="page-header"><center><h2>{% trans 'Select your laboratory' %}</h2></center></div>
+      <form action="" method="post">{% csrf_token %}
+        {{ form | bootstrap }}
+        <div class="text-center">
+          <button type="submit" name="action" value="selectlab" class="save btn btn-primary">{% trans 'Select' %}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+ {% if perm_add_laboratory %}
+   <script>
+	
+	    $(document).ready(() => {
+	      if({{number_of_labs}} == 0) $('#create_lab_btn').click();
+	    });
+	
+   </script>
+ {% endif %}
+{% endblock %}
